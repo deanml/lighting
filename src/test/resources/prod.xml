@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="LightingIntegration" verbose="1" parallel="tests" thread-count="1">
+
+    <listeners>
+        <listener class-name="com.control4.integration.utils.AnnotationTransformer"/>
+    </listeners>
+
+    <parameter name="BaseURI" value="https://10.11.212.56/"/>
+    <parameter name="BasePath" value="api/v1/"/>
+    <parameter name="Environment" value="production"/>
+    <parameter name="User" value="root"/>
+    <parameter name="Password" value="t0talc0ntr0l4!"/>
+
+    <test name="Prod Integration Programming">
+        <classes>
+            <class name="com.control4.integration.programming.Lighting_v2_Programming"/>
+        </classes>
+    </test>
+    <test name="Prod Integration Switch Commands">
+        <classes>
+            <class name="com.control4.integration.commands.Lighting_v2_Switch_Commands"/>
+        </classes>
+    </test>
+    <test name="Prod Integration Dimmer Commands">
+        <classes>
+            <class name="com.control4.integration.commands.Lighting_v2_Dimmer_Commands"/>
+        </classes>
+    </test>
+    <test name="Prod Integration Configurable Keypad Commands">
+        <classes>
+            <class name="com.control4.integration.commands.Lighting_v2_CK_Commands"/>
+        </classes>
+    </test>
+    <test name="Prod Integration Fan Speed Controller Commands">
+        <classes>
+            <class name="com.control4.integration.commands.Lighting_v2_FSC_Commands"/>
+        </classes>
+    </test>
+
+</suite>

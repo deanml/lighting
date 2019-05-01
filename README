@@ -1,0 +1,20 @@
+To run the tests:
+
+Use Maven command 'mvn test'
+If you do not have maven installed these tests can be run in intellij or eclipse using the testng plugin.  The tests
+must be run using a testng suite file (filename.xml).
+There is a maven pom profile in the project which is by default set to use the testng suite file called prod.xml
+This file is located in the src/test/java/resources folder.
+
+These tests can be parallelized across 'tests' as defined in the suite file.  Each test should contain one and only
+one class file if you are running in parallel.  Reason for this is we have class inheritance and trying to run tests in
+parallel by class will result in test failures.  Running with one thread per class file will yield about a 48%
+improvement in execution time with most of the time being spent in dimmer commands tests due to the syncronous nature of
+those tests.
+
+This automation will run against any controller and project (with minor setup).  You will need to create a new testNG
+suite file found under the resources folder with parameters for your controller.
+
+Command tests will detect drivers in your project which are identified and use them to run the command tests.
+If there are no identified drivers in your project for switches, configurable keypads, fan speed controllers, or dimmers
+of all types then warnings will be logged and no tests will be run against the driver commands.
